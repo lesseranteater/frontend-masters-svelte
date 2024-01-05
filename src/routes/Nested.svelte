@@ -1,1 +1,5 @@
-<p>This is a nested component.</p>
+<script>
+  export let answer = "Default answer";
+</script>
+
+<p>The answer is {answer}</p>

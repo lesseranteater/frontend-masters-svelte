@@ -1,5 +1,14 @@
 <script>
   import Nested from "./Nested.svelte";
+  import PackageInfo from "./PackageInfo.svelte";
+
+  const pkg = {
+    name: "svelte",
+    speed: "blazing",
+    version: 4,
+    website: "https://svelte.dev"
+  };
+
   let name = "Alex";
   let src = "/favicon.png";
   let string = "this string contains some <strong>HTML!!!</strong>";
@@ -37,14 +46,26 @@
 <h1>Hello, {name.toUpperCase()}</h1>
 <img {src} alt="Svelte favicon" />
 <p>This is a paragraph</p>
-<Nested />
+
 {@html string}
 
 <button on:click={increment}>Clicked {count} {count === 1 ? "time" : "times"}</button>
 <p>Count doubled is {doubled}</p>
 
+{#if count > 5}
+  <p>{count} is greater than 5</p>
+{:else}
+  <p>{count} is between 0 and 5</p>
+{/if}
+
 <button on:click={addNumbers}>Expand the array</button>
 <p>{numbers.join("+")} = {sum}</p>
+
+<Nested answer={42} />
+<Nested answer="Answer" />
+<Nested />
+
+<PackageInfo {...pkg} />
 
 <style>
   p {
